@@ -1,6 +1,6 @@
 package com.hanghae.restocknotificationsystem.entity;
 
-import com.hanghae.restocknotificationsystem.NotificationStatus;
+import com.hanghae.restocknotificationsystem.enums.NotificationStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,4 +26,9 @@ public class ProductNotificationHistory {
 
     private Long lastUserId; //마지막 발송 유저 아이디
 
+    public ProductNotificationHistory(Long productId, int restockCount, NotificationStatus notificationStatus) {
+        this.productId = productId;
+        this.restockCount = restockCount;
+        this.status = notificationStatus;
+    }
 }

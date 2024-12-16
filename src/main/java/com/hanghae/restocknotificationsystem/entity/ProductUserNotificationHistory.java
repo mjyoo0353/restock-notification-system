@@ -26,4 +26,10 @@ public class ProductUserNotificationHistory {
     private int restockCount; //재입고 회차
     private LocalDateTime sendDate = LocalDateTime.now(); //알림 발송 날짜
 
+    public ProductUserNotificationHistory(Long productId, Long userId, int restockCount) {
+        this.productId = productId;
+        this.userId = userId;
+        this.restockCount = restockCount;
+        this.sendDate = LocalDateTime.now();
+    }
 }

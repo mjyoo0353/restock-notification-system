@@ -1,6 +1,6 @@
 package com.hanghae.restocknotificationsystem.dto;
 
-import com.hanghae.restocknotificationsystem.NotificationStatus;
+import com.hanghae.restocknotificationsystem.enums.NotificationStatus;
 import com.hanghae.restocknotificationsystem.entity.ProductNotificationHistory;
 import lombok.Getter;
 import lombok.Setter;

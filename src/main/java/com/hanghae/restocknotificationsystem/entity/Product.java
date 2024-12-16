@@ -24,6 +24,9 @@ public class Product {
 
     private int quantity; //재고 수량
 
+    public boolean isStock() {
+        return this.quantity > 0;
+    }
 }
 
 
