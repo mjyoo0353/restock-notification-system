@@ -50,12 +50,27 @@ public class ProductNotificationService {
                 break;
             }else{ //재고가 있는 경우
                 history.setStatus(NotificationStatus.COMPLETED);
-                ProductUserNotificationHistory notificationHistory = new ProductUserNotificationHistory(product.getId(), userNotification.getUserId(), product.getRestockCount());
-                userNotificationHistoryRepo.save(notificationHistory);
+                sendNotificationToUser(userNotification, product, product.getRestockCount());
+                notificationHistoryRepo.save(history);
             }
         }
-        notificationHistoryRepo.save(history);
         return new RestockNotificationResponse(history);
+    }
+
+    //알림 전송 (실제로는 메시지를 보내지 않음, 상태만 기록)
+    public void sendNotificationToUser(ProductUserNotification userNotification, Product product, int restockCount) {
+        // 재입고 알림 전송의 상태 테스트를 위한 재고 감소 코드
+        if (product.getQuantity() > 0) {
+            product.setQuantity(product.getQuantity() - 1);
+            productRepo.save(product);
+            System.out.println("재고 감소 완료. 현재 재고: " + product.getQuantity());
+        } else {
+            System.out.println("재고 부족. 알림 전송 중단.");
+        }
+
+        //알림 전송 후 기록 저장
+        ProductUserNotificationHistory notificationHistory = new ProductUserNotificationHistory(product.getId(), userNotification.getUserId(), restockCount);
+        userNotificationHistoryRepo.save(notificationHistory);
     }
 
 }
