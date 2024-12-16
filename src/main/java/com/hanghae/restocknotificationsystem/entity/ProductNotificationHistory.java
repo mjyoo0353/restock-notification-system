@@ -24,7 +24,7 @@ public class ProductNotificationHistory {
     @Enumerated(EnumType.STRING)
     private NotificationStatus status; //재입고 알림 발송 상태
 
-    private Long lastUserId; //마지막 발송 유저 아이디
+    private Long lastSentUserId; //마지막 발송 유저 아이디
 
     public ProductNotificationHistory(Long productId, int restockCount, NotificationStatus notificationStatus) {
         this.productId = productId;

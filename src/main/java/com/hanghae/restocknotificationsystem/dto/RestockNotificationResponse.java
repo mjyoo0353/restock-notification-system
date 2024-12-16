@@ -21,6 +21,6 @@ public class RestockNotificationResponse {
         this.productId = history.getProductId();
         this.restockCount = history.getRestockCount();
         this.status = history.getStatus();
-        this.lastSentUserId = history.getLastUserId();
+        this.lastSentUserId = history.getLastSentUserId();
     }
 }
